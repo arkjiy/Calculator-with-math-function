@@ -22,8 +22,8 @@ int     Calculate(int* pipFuncNum, int* pipCalcNum, double* pdpCalcNum);
  *----------------------------------------------------------------------------------------------*/
 int main()
 {
-    int		liInputCheck = 0;
-    int		liAnswer = 0;
+    int	    liInputCheck = 0;
+    int	    liAnswer = 0;
     int     liFuncNum = 0;
     int     liCalcNum[2];
     double  ldCalcNum[2];
@@ -41,7 +41,7 @@ int main()
             scanf("%d", &liAnswer);
             system("clear");
         }
-    }
+    }   
 
     return 0;
 
@@ -74,42 +74,35 @@ void Description(int* pipFuncNum)
  *----------------------------------------------------------------------------------------------*/
 int Calculate(int* pipFuncNum, int* pipCalcNum, double* pdpCalcNum)
 {
+    void InputNum(char* str)
+    {
+        printf("\n%s\n", str);
+        printf("첫 번째 정수 입력: ");
+        scanf("%d", pipCalcNum);
+        printf("두 번째 정수 입력: ");
+        scanf("%d", pipCalcNum + 1);
+    }
+		
     switch (*pipFuncNum)
     {
     case 1:
         system("clear");
-        printf("\n[덧 셈]\n");
-        printf("첫 번째 정수 입력: ");
-        scanf("%d", pipCalcNum);
-        printf("두 번째 정수 입력: ");
-        scanf("%d", pipCalcNum + 1);
+        InputNum("[덧 셈]");
         printf("%d + %d = %d\n", *pipCalcNum, *(pipCalcNum + 1), *pipCalcNum + *(pipCalcNum + 1));
         return 0;
     case 2:
         system("clear");
-        printf("\n[뺄 셈]\n");
-        printf("첫 번째 정수 입력: ");
-        scanf("%d", pipCalcNum);
-        printf("두 번째 정수 입력: ");
-        scanf("%d", pipCalcNum + 1);
+        InputNum("[뺄 셈]");
         printf("%d - %d = %d\n", *pipCalcNum, *(pipCalcNum + 1), *pipCalcNum - *(pipCalcNum + 1));
         return 0;
     case 3:
         system("clear");
-        printf("\n[곱 셈]\n");
-        printf("첫 번째 정수 입력: ");
-        scanf("%d", pipCalcNum);
-        printf("두 번째 정수 입력: ");
-        scanf("%d", pipCalcNum + 1);
+        InputNum("[곱 셈]");
         printf("%d X %d = %d\n", *pipCalcNum, *(pipCalcNum + 1), (*pipCalcNum) * (*(pipCalcNum + 1)));
         return 0;
     case 4:
         system("clear");
-        printf("\n[나 눗 셈]\n");
-        printf("첫 번째 정수 입력: ");
-        scanf("%d", pipCalcNum);
-        printf("두 번째 정수 입력: ");
-        scanf("%d", pipCalcNum + 1);
+        InputNum("[나 눗 셈]");
         printf("%d / %d = %g\n", *pipCalcNum, *(pipCalcNum + 1), (double)*pipCalcNum / *(pipCalcNum + 1));
         return 0;
     case 5:
@@ -140,10 +133,10 @@ int Calculate(int* pipFuncNum, int* pipCalcNum, double* pdpCalcNum)
         scanf("%lf", pdpCalcNum);
         printf("두 번째 실수 입력: ");
         scanf("%lf", pdpCalcNum + 1);
-        printf("fmod(%g, %g) = %g\n", *pdpCalcNum, *(pdpCalcNum + 1), fmod(*pdpCalcNum, *(pdpCalcNum + 1)));
+        printf("%g Mod %g = %g\n", *pdpCalcNum, *(pdpCalcNum + 1), fmod(*pdpCalcNum, *(pdpCalcNum + 1)));
         return 0;
     default:
-        system("clear");
+    	  system("clear");
         printf("\n\n유효한 번호를 입력하세요.\n");
         return 1;
     }
